@@ -49,6 +49,17 @@ Proyecto, enfocado en administrar y gestionar torneos de fútbol en el país, se
    - La aplicación debe ser escalable para soportar un aumento en el número de usuarios y torneos sin afectar el rendimiento
    - La aplicación debe tener un sistema de logs para monitorear y depurar errores
 
+## Construido con 🛠️
+
+Tecnologías usadas para la implementación del proyecto:
+
+* [Angular](https://angular.dev/overview) - Framework JS para la implementación FrontEnd
+* [Java 8](https://docs.oracle.com/javase/8/docs/api/) - Lenguaje de programación para la implementación BackEnd
+* [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal) - Framework para creación de aplicaciones de simple ejecución
+* [Maven](https://maven.apache.org/) - Manejador de dependencias
+* [MySQL](https://dev.mysql.com/doc/) - Sistema de gestion de base de datos relacionales
+* [MongoDB](https://www.mongodb.com/docs/manual/) - Sistema de gestion de base de datos no relacionales
+
 ## Autores ✒️
 * **Jose Yate** - *Trabajo y Documentación Inicial* - [jhyate](https://github.com/jhyate)
 
