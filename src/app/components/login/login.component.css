@@ -1,0 +1,13 @@
+#img-login-user {
+  display:block;
+  margin:auto;
+}
+
+.primary-color {
+  color: #50b54d;
+}
+
+.btn-login {
+  background-color: #50b54d;
+  color: #263238;
+}
