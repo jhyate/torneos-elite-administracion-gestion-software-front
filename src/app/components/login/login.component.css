@@ -7,7 +7,16 @@
   color: #50b54d;
 }
 
+.color-label {
+  color: #263238;
+}
+
 .btn-login {
   background-color: #50b54d;
   color: #263238;
 }
+
+a {
+  text-decoration: none;
+}
+

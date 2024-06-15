@@ -12,7 +12,7 @@
         <form [formGroup]="formLogin">
           <!-- CORREO -->
           <div class="form-group form-outline mb-4">
-            <label class="form-label" for="email">Correo Electrónico</label>
+            <label class="form-label fw-bold color-label" for="email">Correo Electrónico</label>
             <input formControlName="email" type="email" id="email" class="form-control form-control-lg"
                    placeholder="Ingrese el correo electrónico">
             <small class="form-text text-danger"
@@ -26,7 +26,7 @@
           </div>
           <!-- CONTRASEÑA -->
           <div class="form-group form-outline mb-4">
-            <label class="form-label" for="email">Contraseña</label>
+            <label class="form-label fw-bold color-label" for="email">Contraseña</label>
             <input formControlName="password" type="password" id="password" class="form-control form-control-lg"
                    placeholder="Ingrese la contraseña">
             <small class="form-text text-danger"
@@ -34,12 +34,15 @@
               La contraseña es obligatorio
             </small>
           </div>
-          <!-- OLVID0 CONTRASEÑA -->
-          <div class="d-flex justify-content-around align-items-center mb-4">
-            <a href="#!">¿Has olvidado tu contraseña?</a>
-          </div>
           <!-- BOTON DE INGRESO -->
-          <button type="button" class="btn btn-login btn-lg btn-block w-100">Iniciar sesión</button>
+          <button type="button" class="btn btn-login btn-lg btn-block w-100 pt-1 mb-4">Iniciar sesión</button>
+          <!-- OLVID0 CONTRASEÑA -->
+          <a href="#!" class="small primary-color">¿Has olvidado tu contraseña?</a>
+          <!-- REGISTRAR -->
+          <p class="color-label small">
+            ¿No tienes una cuenta?
+            <a [routerLink]="['/register']" class="primary-color">Registrar</a>
+          </p>
         </form>
       </div>
     </div>
