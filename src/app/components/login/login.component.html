@@ -4,7 +4,7 @@
       <!-- IMAGEN PRINCIPAL DEL LOGIN -->
       <div class="col-md-8 col-lg-7 col-xl-6">
         <img src="assets/img/login.png"
-             class="img-fluid" alt="Phone image">
+             class="img-fluid" alt="Play soccer">
       </div>
       <!-- FORMULARIO DE INGRESO -->
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
@@ -35,7 +35,9 @@
             </small>
           </div>
           <!-- BOTON DE INGRESO -->
-          <button type="button" class="btn btn-login btn-lg btn-block w-100 pt-1 mb-4">Iniciar sesión</button>
+          <button type="button" class="btn btn-login btn-lg btn-block w-100 pt-1 mb-4" [disabled]="formLogin.invalid">
+            Iniciar sesión
+          </button>
           <!-- OLVID0 CONTRASEÑA -->
           <a href="#!" class="small primary-color">¿Has olvidado tu contraseña?</a>
           <!-- REGISTRAR -->

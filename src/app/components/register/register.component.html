@@ -1,1 +1,107 @@
-<p>register works!</p>
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <!-- FORMULARIO DE REGISTRO -->
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <h1 class="font-weight-bold text-center mb-4 primary-color">Torneos Élite Registro</h1>
+        <form [formGroup]="formRegister">
+          <!-- NOMBRE -->
+          <div class="form-group form-outline mb-4">
+            <label class="form-label fw-bold color-label" for="name">Nombre</label>
+            <input formControlName="name" type="text" id="name" class="form-control form-control-lg"
+                   placeholder="Ingrese el nombre">
+            <small class="form-text text-danger"
+                   *ngIf="formRegister.get('name')?.touched && formRegister.get('name')?.hasError('required')">
+              El nombre es obligatorio
+            </small>
+            <small class="form-text text-danger"
+                   *ngIf="formRegister.get('name')?.touched && formRegister.get('name')?.hasError('minlength')">
+              El nombre es demasiado corto
+            </small>
+          </div>
+          <!-- APELLIDO -->
+          <div class="form-group form-outline mb-4">
+            <label class="form-label fw-bold color-label" for="name">Apellido</label>
+            <input formControlName="lastName" type="text" id="lastName" class="form-control form-control-lg"
+                   placeholder="Ingrese el apellido">
+            <small class="form-text text-danger"
+                   *ngIf="formRegister.get('lastName')?.touched && formRegister.get('lastName')?.hasError('required')">
+              El apellido es obligatorio
+            </small>
+            <small class="form-text text-danger"
+                   *ngIf="formRegister.get('lastName')?.touched && formRegister.get('lastName')?.hasError('minlength')">
+              El apellido es demasiado corto
+            </small>
+          </div>
+          <!-- TIPO DE DOCUMENTO Y DOCUMENTO -->
+          <div class="row form-group form-outline mb-4">
+            <!-- TIPO DE DOCUMENTO -->
+            <div class="col col-md-5">
+              <label class="form-label fw-bold color-label" for="typeDocument">Tipo documento</label>
+              <select formControlName="typeDocument" id="typeDocument" class="form-select">
+                <option value="0" disabled>Seleccione</option>
+                <option *ngFor="let item of typesDocument" [value]="item.id">{{ item.abbreviation }}</option>
+              </select>
+              <small class="form-text text-danger"
+                     *ngIf="formRegister.get('typeDocument')?.touched && formRegister.get('typeDocument')?.hasError('min')">
+                El tipo de documento es requerido
+              </small>
+            </div>
+            <!-- DOCUMENTO -->
+            <div class="col" *ngIf="formRegister.get('typeDocument')?.value != '0'">
+              <label class="form-label fw-bold color-label" for="document">Documento</label>
+              <input formControlName="document" type="text" id="document" class="form-control form-control-lg"
+                     placeholder="Ingrese el número de documento">
+              <small class="form-text text-danger"
+                     *ngIf="formRegister.get('document')?.touched && formRegister.get('document')?.hasError('required')">
+                El documento es requerido
+              </small>
+              <small class="form-text text-danger"
+                     *ngIf="formRegister.get('document')?.touched && formRegister.get('document')?.hasError('minlength')">
+                El documento es demasiado corto
+              </small>
+              <small class="form-text text-danger"
+                     *ngIf="formRegister.get('document')?.touched && formRegister.get('document')?.hasError('pattern')">
+                El documento es inválido, por favor ingresa uno válido (ej. 123456789).
+              </small>
+            </div>
+          </div>
+          <!-- CORREO -->
+          <div class="form-group form-outline mb-4">
+            <label class="form-label fw-bold color-label" for="email">Correo Electrónico</label>
+            <input formControlName="email" type="email" id="email" class="form-control form-control-lg"
+                   placeholder="Ingrese el correo electrónico">
+            <small class="form-text text-danger"
+                   *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError('required')">
+              El correo electrónico es obligatorio
+            </small>
+            <small class="form-text text-danger font-weight-bold"
+                   *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError('pattern')">
+              El correo electrónico es inválido, por favor ingresa uno válido (ej. test@test.com).
+            </small>
+          </div>
+          <!-- CONTRASEÑA -->
+          <div class="form-group form-outline mb-4">
+            <label class="form-label fw-bold color-label" for="email">Contraseña</label>
+            <input formControlName="password" type="password" id="password" class="form-control form-control-lg"
+                   placeholder="Ingrese la contraseña">
+            <small class="form-text text-danger"
+                   *ngIf="formRegister.get('password')?.touched && formRegister.get('password')?.hasError('required')">
+              La contraseña es obligatorio
+            </small>
+          </div>
+          <!-- BOTON DE INGRESO -->
+          <button type="button" class="btn btn-register btn-lg btn-block w-100 pt-1 mb-4"
+                  [disabled]="formRegister.invalid">
+            Registrar
+          </button>
+        </form>
+      </div>
+      <!-- IMAGEN PRINCIPAL DEL LOGIN -->
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="assets/img/register.png"
+             class="img-fluid" alt="Goalkeeper">
+      </div>
+    </div>
+  </div>
+</section>
