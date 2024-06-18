@@ -1,18 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TypesDocumentModel} from "../../models/typesDocument.model";
+import {VisibilityComponentsService} from "../../services/visibility.components.service";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css', './../../app.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   formRegister: FormGroup;
   typesDocument: TypesDocumentModel[];
 
-  constructor() {
+  constructor(private visibilityComponentsService: VisibilityComponentsService) {
+    // se oculta nav y footer
+    this.visibilityComponentsService.toggleNavVisibility(false);
+    this.visibilityComponentsService.toggleFooterVisibility(false);
+
     // inicializacion del formulario
     this.formRegister = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -42,6 +47,12 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    // destroy de nav y footer
+    this.visibilityComponentsService.toggleFooterVisibility(true);
+    this.visibilityComponentsService.toggleNavVisibility(true);
   }
 
   get nameField() {

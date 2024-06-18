@@ -35,7 +35,8 @@
             </small>
           </div>
           <!-- BOTON DE INGRESO -->
-          <button type="button" class="btn btn-login btn-lg btn-block w-100 pt-1 mb-4" [disabled]="formLogin.invalid">
+          <button [routerLink]="['/home']" type="button" class="btn btn-login btn-lg btn-block w-100 pt-1 mb-4"
+                  [disabled]="formLogin.invalid">
             Iniciar sesión
           </button>
           <!-- OLVID0 CONTRASEÑA -->

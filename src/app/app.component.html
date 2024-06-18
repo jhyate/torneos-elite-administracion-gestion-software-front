@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div class="wrapper">
+  <app-nav *ngIf="showNav"></app-nav>
+  <div class="content-wrapper">
+    <div class="container-fluid py-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-footer *ngIf="showFooter"></app-footer>
+</div>

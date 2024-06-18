@@ -1,16 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {VisibilityComponentsService} from "../../services/visibility.components.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css', './../../app.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   formLogin: FormGroup;
 
-  constructor() {
+  constructor(private visibilityComponentsService: VisibilityComponentsService) {
+    // se oculta nav y footer
+    this.visibilityComponentsService.toggleNavVisibility(false);
+    this.visibilityComponentsService.toggleFooterVisibility(false);
+
     // inicializacion del formulario
     this.formLogin = new FormGroup({
       email: new FormControl('', [Validators.required,
@@ -20,6 +25,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    // destroy de nav y footer
+    this.visibilityComponentsService.toggleFooterVisibility(true);
+    this.visibilityComponentsService.toggleNavVisibility(true);
   }
 
   get emailField() {
