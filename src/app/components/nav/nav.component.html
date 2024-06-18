@@ -1,1 +1,40 @@
-<p>nav works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- BOTON RESPONSIVE MENU -->
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <!-- CONTENIDO (MENU) IZQUIERDA -->
+    <div class="collapse navbar-collapse" id="content-nav">
+      <a class="navbar-brand mt-2 mt-lg-0 font-weight-bold primary-color" [routerLink]="['/home']">
+        Torneos Élite
+      </a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['/home']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Torneo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Delegado</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Equipo</a>
+        </li>
+      </ul>
+    </div>
+    <!-- CONTENIDO (MENU) DERECHA -->
+    <div class="d-flex align-items-center">
+      <div class="dropdown">
+        <a data-mdb-dropdown-init class="d-flex align-items-center"
+           href="#" id="nav-avatar" role="button" aria-expanded="false">
+          <img src="./../../../assets/img/player.webp"
+            class="rounded-circle" height="25" alt="logo player"
+            loading="lazy"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
