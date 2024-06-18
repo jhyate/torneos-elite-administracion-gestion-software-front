@@ -11,11 +11,11 @@
             <input formControlName="name" type="text" id="name" class="form-control form-control-lg"
                    placeholder="Ingrese el nombre">
             <small class="form-text text-danger"
-                   *ngIf="formRegister.get('name')?.touched && formRegister.get('name')?.hasError('required')">
+                   *ngIf="nameField?.touched && nameField?.hasError('required')">
               El nombre es obligatorio
             </small>
             <small class="form-text text-danger"
-                   *ngIf="formRegister.get('name')?.touched && formRegister.get('name')?.hasError('minlength')">
+                   *ngIf="nameField?.touched && nameField?.hasError('minlength')">
               El nombre es demasiado corto
             </small>
           </div>
@@ -25,11 +25,11 @@
             <input formControlName="lastName" type="text" id="lastName" class="form-control form-control-lg"
                    placeholder="Ingrese el apellido">
             <small class="form-text text-danger"
-                   *ngIf="formRegister.get('lastName')?.touched && formRegister.get('lastName')?.hasError('required')">
+                   *ngIf="lastNameField?.touched && lastNameField?.hasError('required')">
               El apellido es obligatorio
             </small>
             <small class="form-text text-danger"
-                   *ngIf="formRegister.get('lastName')?.touched && formRegister.get('lastName')?.hasError('minlength')">
+                   *ngIf="lastNameField?.touched && lastNameField?.hasError('minlength')">
               El apellido es demasiado corto
             </small>
           </div>
@@ -43,25 +43,25 @@
                 <option *ngFor="let item of typesDocument" [value]="item.id">{{ item.abbreviation }}</option>
               </select>
               <small class="form-text text-danger"
-                     *ngIf="formRegister.get('typeDocument')?.touched && formRegister.get('typeDocument')?.hasError('min')">
+                     *ngIf="typeDocumentField?.touched && typeDocumentField?.hasError('min')">
                 El tipo de documento es requerido
               </small>
             </div>
             <!-- DOCUMENTO -->
-            <div class="col" *ngIf="formRegister.get('typeDocument')?.value != '0'">
+            <div class="col" *ngIf="typeDocumentField?.value != '0'">
               <label class="form-label fw-bold color-label" for="document">Documento</label>
               <input formControlName="document" type="text" id="document" class="form-control form-control-lg"
                      placeholder="Ingrese el número de documento">
               <small class="form-text text-danger"
-                     *ngIf="formRegister.get('document')?.touched && formRegister.get('document')?.hasError('required')">
+                     *ngIf="documentField?.touched && documentField?.hasError('required')">
                 El documento es requerido
               </small>
               <small class="form-text text-danger"
-                     *ngIf="formRegister.get('document')?.touched && formRegister.get('document')?.hasError('minlength')">
+                     *ngIf="documentField?.touched && documentField?.hasError('minlength')">
                 El documento es demasiado corto
               </small>
               <small class="form-text text-danger"
-                     *ngIf="formRegister.get('document')?.touched && formRegister.get('document')?.hasError('pattern')">
+                     *ngIf="documentField?.touched && documentField?.hasError('pattern')">
                 El documento es inválido, por favor ingresa uno válido (ej. 123456789).
               </small>
             </div>
@@ -72,11 +72,11 @@
             <input formControlName="email" type="email" id="email" class="form-control form-control-lg"
                    placeholder="Ingrese el correo electrónico">
             <small class="form-text text-danger"
-                   *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError('required')">
+                   *ngIf="emailField?.touched && emailField?.hasError('required')">
               El correo electrónico es obligatorio
             </small>
             <small class="form-text text-danger font-weight-bold"
-                   *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError('pattern')">
+                   *ngIf="emailField?.touched && emailField?.hasError('pattern')">
               El correo electrónico es inválido, por favor ingresa uno válido (ej. test@test.com).
             </small>
           </div>
@@ -86,7 +86,7 @@
             <input formControlName="password" type="password" id="password" class="form-control form-control-lg"
                    placeholder="Ingrese la contraseña">
             <small class="form-text text-danger"
-                   *ngIf="formRegister.get('password')?.touched && formRegister.get('password')?.hasError('required')">
+                   *ngIf="passwordField?.touched && passwordField?.hasError('required')">
               La contraseña es obligatorio
             </small>
           </div>

@@ -43,4 +43,32 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  get nameField() {
+    return this.formRegister.get('name');
+  }
+
+  get lastNameField() {
+    return this.formRegister.get('lastName');
+  }
+
+  get typeDocumentField() {
+    return this.formRegister.get('typeDocument');
+  }
+
+  get documentField() {
+    return this.formRegister.get('document');
+  }
+
+  get phoneField() {
+    return this.formRegister.get('phone');
+  }
+
+  get emailField() {
+    return this.formRegister.get('email');
+  }
+
+  get passwordField() {
+    return this.formRegister.get('password');
+  }
 }

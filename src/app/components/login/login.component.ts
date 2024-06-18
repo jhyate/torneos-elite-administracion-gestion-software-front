@@ -21,4 +21,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  get emailField() {
+    return this.formLogin.get('email');
+  }
+
+  get passwordField() {
+    return this.formLogin.get('password');
+  }
 }

@@ -16,11 +16,11 @@
             <input formControlName="email" type="email" id="email" class="form-control form-control-lg"
                    placeholder="Ingrese el correo electrónico">
             <small class="form-text text-danger"
-                   *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.hasError('required')">
+                   *ngIf="emailField?.touched && emailField?.hasError('required')">
               El correo electrónico es obligatorio
             </small>
             <small class="form-text text-danger font-weight-bold"
-                   *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.hasError('pattern')">
+                   *ngIf="emailField?.touched && emailField?.hasError('pattern')">
               El correo electrónico es inválido, por favor ingresa uno válido (ej. test@test.com).
             </small>
           </div>
@@ -30,7 +30,7 @@
             <input formControlName="password" type="password" id="password" class="form-control form-control-lg"
                    placeholder="Ingrese la contraseña">
             <small class="form-text text-danger"
-                   *ngIf="formLogin.get('password')?.touched && formLogin.get('password')?.hasError('required')">
+                   *ngIf="passwordField?.touched && passwordField?.hasError('required')">
               La contraseña es obligatorio
             </small>
           </div>
