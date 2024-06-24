@@ -1,0 +1,36 @@
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col {
+  flex: 1;
+  padding: 15px;
+  box-sizing: border-box;
+}
+.feature-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+.feature-box h5 {
+  font-size: 18px;
+  color: #50b54d;
+  margin-bottom: 15px;
+}
+.feature-box p {
+  font-size: 14px;
+  color: #2c3e50;
+}
+.feature-box i {
+  font-size: 40px;
+  color: #50b54d;
+  margin-bottom: 10px;
+}
+.letter-home {
+  margin-top: 20px;
+}
+
