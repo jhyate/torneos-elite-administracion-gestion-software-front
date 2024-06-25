@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         abbreviation: 'TI',
         description: 'Tarjeta de identidad'
       }
-    ]
+    ];
   }
 
   ngOnInit(): void {

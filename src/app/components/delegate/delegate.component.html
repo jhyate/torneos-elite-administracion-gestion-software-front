@@ -1,0 +1,113 @@
+<div class="container h-100">
+  <div class="row d-flex align-items-center justify-content-center h-100">
+    <div class="tab-content card border-0 card-shadow p-3 mb-5" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="content-send-docs" role="tabpanel" aria-labelledby="nav-send-docs">
+        <div class="d-flex justify-content-center">
+          <ul class="nav nav-pills mb-3 mt-4" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link form-control" [ngClass]="statusSwitch == 'create' ? 'active' : ''"
+                 id="switchButtons"
+                 data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true"
+                 (click)="setStatusSwitch('create')">
+                Crear
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link form-control" [ngClass]="statusSwitch == 'teams' ? 'active' : ''"
+                 id="switchButtons"
+                 data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true"
+                 (click)="setStatusSwitch('teams')">
+                Equipos
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <!-- CREACION -->
+        <div *ngIf="statusSwitch === 'create'">
+          <div class="container">
+            <h2 class="title-desc-tab semi-bold primary-color">Crear Equipo</h2>
+            <div class="tab-content card border-0 card-shadow p-3 mb-5" id="nav-tabContent-1">
+              <!-- FORMULARIO PARA CREAR EQUIPO -->
+              <form [formGroup]="formTeam">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <!-- NOMBRE -->
+                    <div class="form-group form-outline mb-4">
+                      <label class="form-label fw-bold color-label" for="name">Nombre</label>
+                      <input formControlName="name" type="text" id="name" class="form-control form-control-lg"
+                             placeholder="Ingrese el nombre">
+                      <small class="form-text text-danger"
+                             *ngIf="nameField?.touched && nameField?.hasError('required')">
+                        El nombre es obligatorio
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="nameField?.touched && nameField?.hasError('minlength')">
+                        El nombre es demasiado corto
+                      </small>
+                    </div>
+                    <!-- CATEGORIA -->
+                    <div class="row form-group form-outline">
+                      <div class="col">
+                        <label class="form-label fw-bold color-label" for="category">Categoria</label>
+                        <select formControlName="category" id="category" class="form-select">
+                          <option value="0" disabled>Seleccione</option>
+                          <option *ngFor="let item of category" [value]="item.id">{{ item.category }}</option>
+                        </select>
+                        <small class="form-text text-danger"
+                               *ngIf="categoryField?.touched && categoryField?.hasError('min')">
+                          La categoria es requerida.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- ABREVIATURA DEL EQUIPO -->
+                    <div class="form-group form-outline mb-4">
+                      <label class="form-label fw-bold color-label" for="abbreviation">Abreviatura del nombre</label>
+                      <input formControlName="abbreviation" type="text" id="abbreviation" class="form-control form-control-lg"
+                             placeholder="Ingrese la abreviatura">
+                      <small class="form-text text-danger"
+                             *ngIf="abbreviationField?.touched && abbreviationField?.hasError('required')">
+                        La abreviatura es obligatoria
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="abbreviationField?.touched && abbreviationField?.hasError('minlength')">
+                        La abreviatura es demasiado corta
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="abbreviationField?.touched && abbreviationField?.hasError('maxlength')">
+                        La abreviatura es demasiada larga
+                      </small>
+                    </div>
+                    <!-- TORNEOS -->
+                    <div class="row form-group form-outline">
+                      <div class="col">
+                        <label class="form-label fw-bold color-label" for="tournament">Torneo</label>
+                        <select formControlName="tournament" id="tournament" class="form-select">
+                          <option value="0" disabled>Seleccione</option>
+                          <option *ngFor="let item of tournaments" [value]="item.id">{{ item.tournament }}</option>
+                        </select>
+                        <small class="form-text text-danger"
+                               *ngIf="tournamentField?.touched && tournamentField?.hasError('min')">
+                          El torneo es requerido.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- BOTON CREAR -->
+            <div class="tab-content card border-0 card-shadow mb-5">
+              <button type="button" class="btn btn-success" [disabled]="formTeam.invalid">
+                Crear
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
