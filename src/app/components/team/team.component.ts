@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {TypesDocumentModel} from "../../models/typesDocument.model";
+import {TypeDocumentModel} from "../../models/typeDocument.model";
 import {EpsModel} from "../../models/eps.model";
 import {PlayerModel} from "../../models/player.model";
 
@@ -13,7 +13,7 @@ export class TeamComponent {
 
   statusSwitch: string;
   formPlayer: FormGroup;
-  typesDocument: TypesDocumentModel[];
+  typesDocument: TypeDocumentModel[];
   eps: EpsModel[];
   size: string[];
   players: PlayerModel[];
@@ -135,7 +135,7 @@ export class TeamComponent {
   }
 
   getTypeDocument(typeDocument: number): string {
-    let type: TypesDocumentModel | undefined = this.typesDocument.find(item => item.id == typeDocument);
+    let type: TypeDocumentModel | undefined = this.typesDocument.find(item => item.id == typeDocument);
     return type !== undefined ? type.abbreviation : ' ';
   }
 

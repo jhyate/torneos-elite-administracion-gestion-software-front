@@ -107,6 +107,62 @@
             </div>
           </div>
         </div>
+        <!-- LISTADO DE CREADOS -->
+        <div *ngIf="statusSwitch === 'teams'">
+          <div class="container">
+            <h2 class="title-desc-tab semi-bold primary-color">Equipos - Jose Yate</h2>
+            <div class="form-group row">
+              <table class="display table-bordered table-sm table-hover" style="width:100%">
+                <thead class="text-center table primary-color">
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Abreviatura</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Torneo</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of teams">
+                  <td class="text-center">{{ item.name }}</td>
+                  <td class="text-center">{{ item.abbreviation }}</td>
+                  <td class="text-center">{{ item.categoryId }}</td>
+                  <td class="text-center">{{ item.tournamentId }}</td>
+
+                  <td class="text-center align-middle fit-content">
+                    <span>
+                     <i class="fa fa-user primary-color" aria-hidden="true"></i>
+                    </span>&nbsp;
+                    &nbsp;<span>
+                      <i class="fa fa-minus-circle primary-color" aria-hidden="true" data-toggle="modal"
+                         data-target="#deleteModal"></i>
+                    </span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar este equipo?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="confirmDelete">Eliminar</button>
       </div>
     </div>
   </div>

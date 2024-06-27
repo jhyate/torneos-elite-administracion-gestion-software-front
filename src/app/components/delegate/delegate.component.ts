@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CategoryModel} from "../../models/category.model";
+import {TournamentModel} from "../../models/tournament.model";
+import {TeamModel} from "../../models/team.model";
 
 @Component({
   selector: 'app-delegate',
@@ -9,15 +12,17 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class DelegateComponent {
   statusSwitch: string;
   formTeam: FormGroup;
-  category: any[];
-  tournaments: any[];
+  category: CategoryModel[];
+  tournaments: TournamentModel[];
+  teams: TeamModel[];
 
   constructor() {
     this.statusSwitch = 'create';
-    this.category = [{
-      id: 1,
-      category: 'Unica'
-    },
+    this.category = [
+      {
+        id: 1,
+        category: 'Unica'
+      },
       {
         id: 2,
         category: 'Veteranos'
@@ -35,16 +40,35 @@ export class DelegateComponent {
         category: '2017 - 2018'
       }];
 
-    this.tournaments = [{
-      id: 1,
-      tournament: 'Futbol 11'
-    },{
-      id: 2,
-      tournament: 'Futbol 8'
-    },{
-      id: 3,
-      tournament: 'Microfutbol'
-    }];
+    this.tournaments = [
+      {
+        id: 1,
+        tournament: 'Futbol 11'
+      }, {
+        id: 2,
+        tournament: 'Futbol 8'
+      }, {
+        id: 3,
+        tournament: 'Microfutbol'
+      }
+    ];
+
+    this.teams = [
+      {
+        id: 1,
+        name: 'Dreamers FC',
+        categoryId: 1,
+        tournamentId: 1,
+        abbreviation: 'DF'
+      },
+      {
+        id: 2,
+        name: 'Realeza Soacha',
+        abbreviation: 'RS',
+        tournamentId: 3,
+        categoryId: 2
+      }
+    ];
 
     // inicializacion del formulario
     this.formTeam = new FormGroup({

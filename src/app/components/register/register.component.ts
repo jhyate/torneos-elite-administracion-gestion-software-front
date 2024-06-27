@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {TypesDocumentModel} from "../../models/typesDocument.model";
+import {TypeDocumentModel} from "../../models/typeDocument.model";
 import {VisibilityComponentsService} from "../../services/visibility.components.service";
 
 @Component({
@@ -11,7 +11,7 @@ import {VisibilityComponentsService} from "../../services/visibility.components.
 export class RegisterComponent implements OnInit, OnDestroy {
 
   formRegister: FormGroup;
-  typesDocument: TypesDocumentModel[];
+  typesDocument: TypeDocumentModel[];
 
   constructor(private visibilityComponentsService: VisibilityComponentsService) {
     // se oculta nav y footer
