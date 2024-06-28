@@ -1,0 +1,47 @@
+.nav {
+  margin: auto;
+}
+
+.toggle-item.round.active {
+  background: #50b54d;
+  color: black;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #ebeced;
+  background-color: #50b54d;
+  box-sizing: initial;
+  border-radius: 1.25rem;
+  margin-left: -3px;
+  overflow: overlay;
+  cursor: pointer;
+  height: 1.563rem;
+  font-weight: bold;
+  content-visibility: auto!important;
+}
+
+.nav-pills .nav-link {
+  border-radius: 1.25rem;
+  box-sizing: initial;
+  margin-left: -1px;
+  text-align: center;
+  min-width: 100px;
+  cursor: pointer;
+  height: 1.563rem;
+  color: #6c757d;
+}
+
+.navbar-nav .nav-link-one {
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 18px;
+}
+
+.navbar-nav .active > .nav-link-one {
+  color: #50b54d;
+  font-weight: bold;
+  width: 100%;
+  height: 2.8rem;
+  border-bottom: .25rem solid transparent;
+  border-bottom-color: #50b54d;
+}

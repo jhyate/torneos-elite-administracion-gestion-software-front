@@ -1,0 +1,260 @@
+<div class="container h-100">
+  <div class="row d-flex align-items-center justify-content-center h-100">
+    <div class="tab-content card border-0 card-shadow p-3 mb-5" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="content-send-docs" role="tabpanel" aria-labelledby="nav-send-docs">
+        <div class="d-flex justify-content-center">
+          <ul class="nav nav-pills mb-3 mt-4" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link form-control" [ngClass]="statusSwitch == 'create' ? 'active' : ''"
+                 id="switchButtonCreate"
+                 data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true"
+                 (click)="setStatusSwitch('create')">
+                Crear
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link form-control" [ngClass]="statusSwitch == 'tournaments' ? 'active' : ''"
+                 id="switchButtonTournaments"
+                 data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true"
+                 (click)="setStatusSwitch('tournaments')">
+                Torneos
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <!-- CREACION -->
+        <div *ngIf="statusSwitch === 'create'">
+          <div class="container">
+            <h2 class="title-desc-tab semi-bold primary-color">Crear Torneo</h2>
+            <div class="tab-content card border-0 card-shadow p-3 mb-5" id="nav-tabContent-1">
+              <!-- FORMULARIO PARA CREAR TORNEO -->
+              <form [formGroup]="formTournament">
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <!-- NOMBRE -->
+                    <div class="form-group form-outline mb-4">
+                      <label class="form-label fw-bold color-label" for="name">Nombre</label>
+                      <input formControlName="name" type="text" id="name" class="form-control form-control-lg"
+                             placeholder="Ingrese el nombre">
+                      <small class="form-text text-danger"
+                             *ngIf="nameField?.touched && nameField?.hasError('required')">
+                        El nombre es obligatorio
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="nameField?.touched && nameField?.hasError('minlength')">
+                        El nombre es demasiado corto
+                      </small>
+                    </div>
+                    <!-- TIPO DE TORNEO -->
+                    <div class="row form-group form-outline mb-4">
+                      <div class="col">
+                        <label class="form-label fw-bold color-label" for="type">Tipo</label>
+                        <select formControlName="type" id="type" class="form-select">
+                          <option value="0" disabled>Seleccione</option>
+                          <option *ngFor="let item of typesTournament" [value]="item.id">{{ item.description }}</option>
+                        </select>
+                        <small class="form-text text-danger"
+                               *ngIf="typeField?.touched && typeField?.hasError('required')">
+                          El tipo de torneo es obligatorio
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="typeField?.touched && typeField?.hasError('min')">
+                          El tipo de torneo es requerido.
+                        </small>
+                      </div>
+                    </div>
+                    <!-- FECHA INICIO Y FIN DEL TORNEO -->
+                    <div class="row form-group form-outline mb-4">
+                      <div class="col col-md-6">
+                        <label class="form-label fw-bold color-label" for="name">Fecha Inicio</label>
+                        <br>
+                        <mat-form-field>
+                          <input formControlName="initialDate" matInput [matDatepicker]="initialDate"
+                                 placeholder="Seleccione fecha inicio" id="initialDate">
+                          <mat-datepicker-toggle matSuffix [for]="initialDate"></mat-datepicker-toggle>
+                          <mat-datepicker #initialDate></mat-datepicker>
+                        </mat-form-field>
+                        <small class="form-text text-danger"
+                               *ngIf="initialDateField?.touched && initialDateField?.hasError('required')">
+                          La fecha de inicio es requerida.
+                        </small>
+                      </div>
+                      <div class="col col-md-6">
+                        <label class="form-label fw-bold color-label" for="name">Fecha Fin</label>
+                        <br>
+                        <mat-form-field>
+                          <input formControlName="endDate" matInput [matDatepicker]="dateEnd"
+                                 placeholder="Seleccione fecha fin" id="dateEnd">
+                          <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
+                          <mat-datepicker #dateEnd></mat-datepicker>
+                        </mat-form-field>
+                        <small class="form-text text-danger"
+                               *ngIf="endDateField?.touched && endDateField?.hasError('required')">
+                          La fecha fin es requerida.
+                        </small>
+                      </div>
+                    </div>
+                    <!-- VOLOR DE INSCRIPCION -->
+                    <div class="form-group form-outline mb-4">
+                      <label class="form-label fw-bold color-label" for="inscription">Inscripción</label>
+                      <input formControlName="inscription" type="text" id="inscription"
+                             class="form-control form-control-lg"
+                             placeholder="Ingrese la inscripción">
+                      <small class="form-text text-danger"
+                             *ngIf="inscriptionField?.touched && inscriptionField?.hasError('required')">
+                        La inscripción es obligatoria.
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="inscriptionField?.touched && inscriptionField?.hasError('minlength')">
+                        El valor del la inscripción es demasiada corto.
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="inscriptionField?.touched && inscriptionField?.hasError('pattern')">
+                        El valor del la inscripción es inválida, por favor ingresa una válido (ej. 145.000).
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- CATEGORIA -->
+                    <div class="row form-group form-outline mb-4">
+                      <div class="col">
+                        <label class="form-label fw-bold color-label" for="category">Categoria</label>
+                        <select formControlName="category" id="category" class="form-select">
+                          <option value="0" disabled>Seleccione</option>
+                          <option *ngFor="let item of category" [value]="item.id">{{ item.category }}</option>
+                        </select>
+                        <small class="form-text text-danger"
+                               *ngIf="categoryField?.touched && categoryField?.hasError('min')">
+                          La categoria es requerida.
+                        </small>
+                      </div>
+                    </div>
+                    <!-- PREMIACION -->
+                    <div class="form-group form-outline mb-4">
+                      <label class="form-label fw-bold color-label" for="prize">Premiación</label>
+                      <input formControlName="prize" type="text" id="prize" class="form-control form-control-lg"
+                             placeholder="Ingrese la premiación">
+                      <small class="form-text text-danger"
+                             *ngIf="prizeField?.touched && prizeField?.hasError('required')">
+                        La premiacón es obligatorio
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="prizeField?.touched && prizeField?.hasError('minlength')">
+                        El valor de premiacón es demasiado corto
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="prizeField?.touched && prizeField?.hasError('pattern')">
+                        El valor de premiación es inválida, por favor ingresa una válido (ej. 500.000).
+                      </small>
+                    </div>
+                    <!-- VOLOR DE ARBITRAJE -->
+                    <div class="form-group form-outline mb-4">
+                      <label class="form-label fw-bold color-label" for="arbitration">Arbitraje</label>
+                      <input formControlName="arbitration" type="text" id="arbitration"
+                             class="form-control form-control-lg"
+                             placeholder="Ingrese el arbitraje">
+                      <small class="form-text text-danger"
+                             *ngIf="arbitrationField?.touched && arbitrationField?.hasError('required')">
+                        El arbitraje es obligatorio
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="arbitrationField?.touched && arbitrationField?.hasError('minlength')">
+                        El valor del arbitraje es demasiado corto
+                      </small>
+                      <small class="form-text text-danger"
+                             *ngIf="arbitrationField?.touched && arbitrationField?.hasError('pattern')">
+                        El valor del arbitraje es inválida, por favor ingresa una válido (ej. 45.000).
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- BOTON CREAR -->
+            <div class="tab-content card border-0 card-shadow mb-5">
+              <button type="button" class="btn btn-success" [disabled]="formTournament.invalid"
+                      (click)="saveTournament()">
+                Crear
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- TORNEDOS CREADOS -->
+        <div *ngIf="statusSwitch === 'tournaments'">
+          <div class="container">
+            <h2 class="title-desc-tab semi-bold primary-color">Torneos</h2>
+            <div class="form-group row">
+              <table class="display table-bordered table-sm table-hover" style="width:100%">
+                <thead class="text-center table primary-color">
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Fecha Inicio</th>
+                  <th scope="col">Fecha Fin</th>
+                  <th scope="col">Categoria</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Premiacion</th>
+                  <th scope="col">Inscripcion</th>
+                  <th scope="col">Arbitraje</th>
+                  <th scope="col">Porcentaje Primer Puesto</th>
+                  <th scope="col">Porcentaje Segundo Puesto</th>
+                  <th scope="col">Porcentaje Tercer Puesto</th>
+                  <th scope="col">Incentivo Cuarto Puesto</th>
+                  <th scope="col">Cantidad Participantes</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of tournaments">
+                  <td class="text-center">{{ item.name }}</td>
+                  <td class="text-center">{{ item.initialDate }}</td>
+                  <td class="text-center">{{ item.endDate }}</td>
+                  <td class="text-center">{{ item.categoryId }}</td>
+                  <td class="text-center">{{ item.typeId }}</td>
+                  <td class="text-center">$ {{ item.prize }}</td>
+                  <td class="text-center">$ {{ item.inscription }}</td>
+                  <td class="text-center">$ {{ item.arbitration }}</td>
+                  <td class="text-center">{{ item.firstPlacePercentage }}%</td>
+                  <td class="text-center">{{ item.secondPlacePercentage }}%</td>
+                  <td class="text-center">{{ item.thirdPlacePercentage }}%</td>
+                  <td class="text-center">{{ item.fourthPlaceCent ? 'SI' : 'NO' }}</td>
+                  <td class="text-center">{{ item.numberOfParticipants }}</td>
+                  <td class="text-center align-middle fit-content">
+                    <span>
+                     <i class="fa fa-user primary-color" aria-hidden="true"></i>
+                    </span>&nbsp;
+                    &nbsp;<span>
+                      <i class="fa fa-minus-circle primary-color" aria-hidden="true" data-toggle="modal"
+                         data-target="#deleteModal"></i>
+                    </span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar este torneo?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="confirmDelete">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

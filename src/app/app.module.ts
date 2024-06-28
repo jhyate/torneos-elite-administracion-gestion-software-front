@@ -11,6 +11,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
 import { TeamComponent } from './components/team/team.component';
 import { DelegateComponent } from './components/delegate/delegate.component';
+import { TournamentComponent } from './components/tournament/tournament.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -21,13 +27,19 @@ import { DelegateComponent } from './components/delegate/delegate.component';
     FooterComponent,
     NavComponent,
     TeamComponent,
-    DelegateComponent
+    DelegateComponent,
+    TournamentComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

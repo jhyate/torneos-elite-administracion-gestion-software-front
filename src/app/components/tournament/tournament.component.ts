@@ -1,23 +1,25 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoryModel} from "../../models/category.model";
+import {TypeTournamentModel} from "../../models/typeTournament.model";
 import {TournamentModel} from "../../models/tournament.model";
-import {TeamModel} from "../../models/team.model";
 
 @Component({
-  selector: 'app-delegate',
-  templateUrl: './delegate.component.html',
-  styleUrls: ['./delegate.component.css', './../../app.component.css']
+  selector: 'app-tournament',
+  templateUrl: './tournament.component.html',
+  styleUrls: ['./tournament.component.css', './../../app.component.css']
 })
-export class DelegateComponent {
+export class TournamentComponent {
+
+  formTournament: FormGroup;
   statusSwitch: string;
-  formTeam: FormGroup;
   category: CategoryModel[];
+  typesTournament: TypeTournamentModel[];
   tournaments: TournamentModel[];
-  teams: TeamModel[];
 
   constructor() {
     this.statusSwitch = 'create';
+
     this.category = [
       {
         id: 1,
@@ -39,6 +41,24 @@ export class DelegateComponent {
         id: 4,
         category: '2017 - 2018'
       }];
+
+    this.typesTournament = [
+      {
+        id: 1,
+        type: 11,
+        description: 'Futbol 11'
+      },
+      {
+        id: 2,
+        type: 8,
+        description: 'Futbol 8'
+      },
+      {
+        id: 3,
+        type: 5,
+        description: 'Microfutbol'
+      }
+    ];
 
     this.tournaments = [
       {
@@ -91,29 +111,19 @@ export class DelegateComponent {
       }
     ];
 
-    this.teams = [
-      {
-        id: 1,
-        name: 'Dreamers FC',
-        categoryId: 1,
-        tournamentId: 1,
-        abbreviation: 'DF'
-      },
-      {
-        id: 2,
-        name: 'Realeza Soacha',
-        abbreviation: 'RS',
-        tournamentId: 3,
-        categoryId: 2
-      }
-    ];
-
     // inicializacion del formulario
-    this.formTeam = new FormGroup({
+    this.formTournament = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      abbreviation: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(4)]),
       category: new FormControl('0', [Validators.required, Validators.min(1)]),
-      tournament: new FormControl('0', [Validators.required, Validators.min(1)])
+      type: new FormControl('0', [Validators.required, Validators.min(1)]),
+      prize: new FormControl('', [Validators.required,
+        Validators.pattern(new RegExp('\\$?\\s?(\\d{1,3}(?:\\.\\d{3})*|\\d+)(,\\d{2})?')), Validators.minLength(6)]),
+      initialDate: new FormControl('', [Validators.required]),
+      endDate: new FormControl('', [Validators.required]),
+      arbitration:  new FormControl('', [Validators.required,
+        Validators.pattern(new RegExp('\\$?\\s?(\\d{1,3}(?:\\.\\d{3})*|\\d+)(,\\d{2})?')), Validators.minLength(5)]),
+      inscription: new FormControl('', [Validators.required,
+        Validators.pattern(new RegExp('\\$?\\s?(\\d{1,3}(?:\\.\\d{3})*|\\d+)(,\\d{2})?')), Validators.minLength(6)]),
     });
   }
 
@@ -121,19 +131,39 @@ export class DelegateComponent {
     this.statusSwitch = status;
   }
 
-  get nameField() {
-    return this.formTeam.get('name');
+  saveTournament(): void {
+
   }
 
-  get abbreviationField() {
-    return this.formTeam.get('abbreviation');
+  get nameField() {
+    return this.formTournament.get('name');
   }
 
   get categoryField() {
-    return this.formTeam.get('category');
+    return this.formTournament.get('category');
   }
 
-  get tournamentField() {
-    return this.formTeam.get('tournament');
+  get typeField() {
+    return this.formTournament.get('type');
+  }
+
+  get prizeField() {
+    return this.formTournament.get('prize');
+  }
+
+  get initialDateField() {
+    return this.formTournament.get('initialDate');
+  }
+
+  get endDateField() {
+    return this.formTournament.get('endDate');
+  }
+
+  get arbitrationField() {
+    return this.formTournament.get('arbitration');
+  }
+
+  get inscriptionField() {
+    return this.formTournament.get('inscription');
   }
 }

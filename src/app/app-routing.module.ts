@@ -5,6 +5,7 @@ import {RegisterComponent} from "./components/register/register.component";
 import {HomeComponent} from "./components/home/home.component";
 import {DelegateComponent} from "./components/delegate/delegate.component";
 import {TeamComponent} from "./components/team/team.component";
+import {TournamentComponent} from "./components/tournament/tournament.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'team',
     component: TeamComponent
+  },
+  {
+    path: 'tournament',
+    component: TournamentComponent
   }
 ];
 
