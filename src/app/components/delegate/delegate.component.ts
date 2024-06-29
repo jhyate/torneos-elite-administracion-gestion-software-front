@@ -117,6 +117,22 @@ export class DelegateComponent {
     });
   }
 
+  saveTeam(): void {
+    let team: TeamModel = {
+      id: this.teams.length,
+      name: this.nameField?.value,
+      abbreviation: this.abbreviationField?.value,
+      categoryId: this.categoryField?.value,
+      tournamentId: this.tournamentField?.value
+    }
+
+    this.teams.push(team);
+    this.formTeam.reset();
+    this.categoryField?.setValue('0');
+    this.tournamentField?.setValue('0');
+    console.log(this.teams);
+  }
+
   setStatusSwitch(status: string): void {
     this.statusSwitch = status;
   }

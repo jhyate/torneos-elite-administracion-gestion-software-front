@@ -66,7 +66,8 @@
                     <!-- ABREVIATURA DEL EQUIPO -->
                     <div class="form-group form-outline mb-4">
                       <label class="form-label fw-bold color-label" for="abbreviation">Abreviatura del nombre</label>
-                      <input formControlName="abbreviation" type="text" id="abbreviation" class="form-control form-control-lg"
+                      <input formControlName="abbreviation" type="text" id="abbreviation"
+                             class="form-control form-control-lg"
                              placeholder="Ingrese la abreviatura">
                       <small class="form-text text-danger"
                              *ngIf="abbreviationField?.touched && abbreviationField?.hasError('required')">
@@ -84,8 +85,8 @@
                     <!-- TORNEOS -->
                     <div class="row form-group form-outline">
                       <div class="col">
-                        <label class="form-label fw-bold color-label" for="tournament">Torneo</label>
-                        <select formControlName="tournament" id="tournament" class="form-select">
+                        <label class="form-label fw-bold color-label" for="tournamentId">Torneo</label>
+                        <select formControlName="tournament" id="tournamentId" class="form-select">
                           <option value="0" disabled>Seleccione</option>
                           <option *ngFor="let item of tournaments" [value]="item.id">{{ item.name }}</option>
                         </select>
@@ -101,7 +102,10 @@
             </div>
             <!-- BOTON CREAR -->
             <div class="tab-content card border-0 card-shadow mb-5">
-              <button type="button" class="btn btn-success" [disabled]="formTeam.invalid">
+              <button name="btnCreateTeam" id="btnCreateTeam"
+                      type="button" class="btn btn-success"
+                      (click)="saveTeam()"
+                      [disabled]="formTeam.invalid">
                 Crear
               </button>
             </div>
