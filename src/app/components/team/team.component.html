@@ -6,7 +6,7 @@
           <ul class="nav nav-pills mb-3 mt-4" id="pills-tab" role="tablist">
             <li class="nav-item">
               <a class="nav-link form-control" [ngClass]="statusSwitch == 'create' ? 'active' : ''"
-                 id="switchButtons"
+                 id="switchButtonCreate"
                  data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true"
                  (click)="setStatusSwitch('create')">
                 Crear
@@ -14,7 +14,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link form-control" [ngClass]="statusSwitch == 'players' ? 'active' : ''"
-                 id="switchButtons"
+                 id="switchButtonPlayers"
                  data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true"
                  (click)="setStatusSwitch('players')">
                 Jugadores
@@ -129,10 +129,16 @@
                       </small>
                     </div>
                     <!-- FECHA NACIMIENTO -->
-                    <div class="form-group form-outline mb-4">
+                    <div class="form-group form-outline">
                       <label class="form-label fw-bold color-label" for="date">Fecha nacimiento</label>
-                      <input formControlName="date" type="text" id="date" class="form-control form-control-lg"
-                             placeholder="Ingrese la fecha de nacimiento">
+                      <br>
+                      <mat-form-field>
+                        <input formControlName="date" matInput [matDatepicker]="date"
+                               placeholder="Ingrese la fecha de nacimiento" id="date">
+                        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                        <mat-datepicker #date></mat-datepicker>
+                      </mat-form-field>
+                      <br>
                       <small class="form-text text-danger"
                              *ngIf="dateField?.touched && dateField?.hasError('required')">
                         El año de nacimiento es obligatorio
@@ -162,7 +168,9 @@
             </div>
             <!-- BOTON CREAR -->
             <div class="tab-content card border-0 card-shadow mb-5">
-              <button type="button" class="btn btn-success" [disabled]="formPlayer.invalid" (click)="savePlayer()">
+              <button name="btnCreatePlayer" id="btnCreatePlayer"
+                      type="button" class="btn btn-success"
+                      [disabled]="formPlayer.invalid" (click)="savePlayer()">
                 Crear
               </button>
             </div>
