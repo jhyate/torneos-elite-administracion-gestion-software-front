@@ -18,10 +18,12 @@ export class TeamComponent {
   size: string[];
   players: PlayerModel[];
   team: string;
+  idPlayer: number;
 
   constructor() {
     this.team = 'Realeza FC';
     this.statusSwitch = 'create';
+    this.idPlayer = 0;
 
     this.typesDocument = [
       {
@@ -125,6 +127,16 @@ export class TeamComponent {
     this.typeDocumentField?.setValue('0');
     this.epsField?.setValue('0');
     this.sizeField?.setValue('0');
+    console.log(this.players);
+  }
+
+  getIdPlayer(id: number): void {
+    this.idPlayer = id;
+  }
+
+  deletePlayer(): void {
+    let player: number | undefined = this.players.findIndex(player => player.id === this.idPlayer);
+    this.players.splice(player, 1);
     console.log(this.players);
   }
 

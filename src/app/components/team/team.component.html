@@ -206,13 +206,13 @@
                   <td class="text-center">{{ item.size }}</td>
                   <td class="text-center">{{ item.number }}</td>
                   <td class="text-center align-middle fit-content">
-                    <span>
-                     <i class="fa fa-user primary-color" aria-hidden="true"></i>
-                    </span>&nbsp;
-                    &nbsp;<span>
+                    <a>
+                      <i class="fa fa-user primary-color" aria-hidden="true"></i>
+                    </a>&nbsp;
+                    &nbsp;<a id="optionDelete_{{item.id}}" (click)="getIdPlayer(item.id)">
                       <i class="fa fa-minus-circle primary-color" aria-hidden="true" data-toggle="modal"
                          data-target="#deleteModal"></i>
-                    </span>
+                    </a>
                   </td>
                 </tr>
                 </tbody>
@@ -238,7 +238,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger" id="confirmDelete">Eliminar</button>
+        <button type="button" class="btn btn-danger" id="confirmDelete" (click)="deletePlayer()" data-dismiss="modal">
+          Eliminar
+        </button>
       </div>
     </div>
   </div>
