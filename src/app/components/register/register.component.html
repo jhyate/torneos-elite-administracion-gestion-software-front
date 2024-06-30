@@ -48,7 +48,7 @@
               </small>
             </div>
             <!-- DOCUMENTO -->
-            <div class="col" *ngIf="typeDocumentField?.value != '0'">
+            <div class="col">
               <label class="form-label fw-bold color-label" for="document">Documento</label>
               <input formControlName="document" type="text" id="document" class="form-control form-control-lg"
                      placeholder="Ingrese el número de documento">
@@ -91,7 +91,8 @@
             </small>
           </div>
           <!-- BOTON DE INGRESO -->
-          <button type="button" class="btn btn-register btn-lg btn-block w-100 pt-1 mb-4"
+          <button id="btnRegister" type="button" class="btn btn-register btn-lg btn-block w-100 pt-1 mb-4"
+                  (click)="register()"
                   [disabled]="formRegister.invalid">
             Registrar
           </button>
